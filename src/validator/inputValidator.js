@@ -1,4 +1,4 @@
-import { NUMBER, ERROR_MESSAGE } from "../constants/constants.js";
+import { NUMBER, ERROR_MESSAGE, GAME } from "../constants/constants.js";
 
 const InputValidator = {
   // 2-1. 플레이어가 입력한 숫자를 검증한다.
@@ -9,6 +9,17 @@ const InputValidator = {
     this.validateDuplicateNumber(userNumber);
 
     return userNumber.split('').map((number) => +number);
+  },
+  // 재시작 또는 종료를 위한 숫자를 검증한다.
+  validateRestartNumber(answer) {
+    if (!this.isNumber(+answer)) {
+      throw new Error(ERROR_MESSAGE.inValidNumber);
+    }
+    if (+answer !== GAME.restart && +answer !== GAME.exit) {
+      throw new Error(ERROR_MESSAGE.invalidRestartNumber);
+    }
+
+    return Number(answer);
   },
   // 3자리만 입력 가능하다.
   validateLength(userNumber) {

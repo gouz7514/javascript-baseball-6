@@ -2,6 +2,7 @@ import OutputView from "../View/OutputView.js";
 import InputView from "../View/InputView.js";
 import Game from "../Model/Game.js";
 
+import { GAME } from "../constants/constants.js";
 import InputValidator from "../validator/inputValidator.js";
 import { generateRandomNumber } from "../util/generateRandomNumber.js";
 
@@ -51,8 +52,8 @@ class GameController {
 
   // 3-3. 게임을 종료한 후 게임을 다시 시작하거나 완전히 종료할 수 있다.
   async getRestart() {
-    const answer = await InputView.getRestart();
-    if (answer === '1') {
+    const answer = InputValidator.validateRestartNumber(await InputView.getRestart());
+    if (answer === GAME.restart) {
       this.startGame();
     }
   }
