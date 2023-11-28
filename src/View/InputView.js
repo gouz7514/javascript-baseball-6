@@ -2,12 +2,12 @@ import { Console } from "@woowacourse/mission-utils";
 import { INPUT_MESSAGE } from "../constants/constants.js";
 
 const InputView = {
-  getUserNumber() {
-    const userNumber = Console.readLineAsync(INPUT_MESSAGE.getUserNumber);
+  async getUserNumber() {
+    const userNumber = await Console.readLineAsync(INPUT_MESSAGE.getUserNumber);
     return userNumber;
   },
-  getRestart() {
-    const answer = Console.readLineAsync(INPUT_MESSAGE.getRestart);
+  async getRestart() {
+    const answer = await Console.readLineAsync(INPUT_MESSAGE.getRestart);
     return answer;
   }
 }
