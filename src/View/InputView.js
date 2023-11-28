@@ -1,9 +1,14 @@
 import { Console } from "@woowacourse/mission-utils";
+import { INPUT_MESSAGE } from "../constants/constants.js";
 
 const InputView = {
   getUserNumber() {
-    const userNumber = Console.readLineAsync('숫자를 입력해주세요 : ');
+    const userNumber = Console.readLineAsync(INPUT_MESSAGE.getUserNumber);
     return userNumber;
+  },
+  restartGame() {
+    const answer = Console.readLineAsync(INPUT_MESSAGE.restartGame);
+    return answer;
   }
 }
 
