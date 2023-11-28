@@ -46,12 +46,12 @@ class GameController {
         break;
       }
     }
-    this.restartGmae();
+    this.getRestart();
   }
 
   // 3-3. 게임을 종료한 후 게임을 다시 시작하거나 완전히 종료할 수 있다.
-  async restartGmae() {
-    const answer = await InputView.restartGame();
+  async getRestart() {
+    const answer = await InputView.getRestart();
     if (answer === '1') {
       this.startGame();
     }

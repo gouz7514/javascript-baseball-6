@@ -5,7 +5,7 @@ export const OUTPUT_MESSAGE = {
 
 export const INPUT_MESSAGE = {
   getUserNumber: '숫자를 입력해주세요 : ',
-  restartGame: '게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n',
+  getRestart: '게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n',
 }
 
 export const NUMBER = {

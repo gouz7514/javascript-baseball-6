@@ -6,8 +6,8 @@ const InputView = {
     const userNumber = Console.readLineAsync(INPUT_MESSAGE.getUserNumber);
     return userNumber;
   },
-  restartGame() {
-    const answer = Console.readLineAsync(INPUT_MESSAGE.restartGame);
+  getRestart() {
+    const answer = Console.readLineAsync(INPUT_MESSAGE.getRestart);
     return answer;
   }
 }
