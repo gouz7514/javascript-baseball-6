@@ -1,7 +1,7 @@
 import { NUMBER, ERROR_MESSAGE, GAME } from "../constants/constants.js";
 
 const InputValidator = {
-  // 2-1. 플레이어가 입력한 숫자를 검증한다.
+  // 2-1-1. 플레이어가 입력한 숫자를 검증한다.
   validateUserNumber(userNumber) {
     this.validateLength(userNumber);
     this.validateNumber(userNumber);

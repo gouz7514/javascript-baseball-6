@@ -28,7 +28,7 @@ class GameController {
     return game;
   }
 
-  // 3. 숫자 야구 게임을 진행한다.
+  // 2. 숫자 야구 게임을 진행한다.
   async playGame(game) {
     while (true) {
       const userNumber = await this.getUserNumber();
@@ -36,7 +36,7 @@ class GameController {
       const result = game.compareNumber();
       OutputView.printResult(result);
       
-      // 3-2. 3개의 숫자를 모두 맞히면 게임이 종료된다.
+      // 2-3. 3개의 숫자를 모두 맞히면 게임이 종료된다.
       if (result.strike === GAME.end) {
         OutputView.endGame();
         break;
@@ -45,13 +45,13 @@ class GameController {
     await this.getRestart();
   }
 
-  // 2. 플레이어는 3자리의 숫자를 입력한다.
+  // 2-1. 플레이어는 3자리의 숫자를 입력한다.
   async getUserNumber() {
     const userNumber = InputValidator.validateUserNumber(await InputView.getUserNumber());
     return userNumber;
   }
 
-  // 3-3. 게임을 종료한 후 게임을 다시 시작하거나 완전히 종료할 수 있다.
+  // 2-4. 게임을 종료한 후 게임을 다시 시작하거나 완전히 종료할 수 있다.
   async getRestart() {
     const answer = InputValidator.validateRestartNumber(await InputView.getRestart());
     if (answer === GAME.restart) {

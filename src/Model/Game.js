@@ -10,7 +10,7 @@ class Game {
     this.#user = user;
   }
 
-  // 3-1. 컴퓨터와 플레이어의 숫자를 비교하고 결과를 반환한다.
+  // 2-2. 컴퓨터와 플레이어의 숫자를 비교하고 결과를 반환한다.
   compareNumber() {
     const result = {
       ball: 0,
