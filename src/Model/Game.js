@@ -2,7 +2,7 @@ class Game {
   #computer;
   #user;
 
-  constructor(computer) {
+  setComputer(computer) {
     this.#computer = computer;
   }
 
@@ -26,6 +26,11 @@ class Game {
     }
 
     return result;
+  }
+
+  reset() {
+    this.#computer = [];
+    this.#user = [];
   }
 }
 

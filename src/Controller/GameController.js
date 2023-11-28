@@ -7,7 +7,10 @@ import InputValidator from "../validator/inputValidator.js";
 import { generateRandomNumber } from "../util/generateRandomNumber.js";
 
 class GameController {
+  #game;
+
   constructor() {
+    this.#game = new Game();
     OutputView.startGame();
   }
 
@@ -24,8 +27,8 @@ class GameController {
   }
 
   #generateGame(computerNumber) {
-    const game = new Game(computerNumber);
-    return game;
+    this.#game.setComputer(computerNumber);
+    return this.#game;
   }
 
   // 2. 숫자 야구 게임을 진행한다.
@@ -55,8 +58,13 @@ class GameController {
   async #getRestart() {
     const answer = InputValidator.validateRestartNumber(await InputView.getRestart());
     if (answer === GAME.restart) {
+      this.#resetGame();
       await this.startGame();
     }
+  }
+
+  #resetGame() {
+    this.#game.reset();
   }
 }
 
