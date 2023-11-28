@@ -1,4 +1,4 @@
-import OutputView from "../../src/View/OutputView"
+import OutputView from "../../src/View/OutputView.js"
 import { MissionUtils } from "@woowacourse/mission-utils";
 import { EOL as LINE_SEPARATOR } from "os";
 

@@ -1,4 +1,4 @@
-import InputValidator from "../../src/validator/inputValidator";
+import InputValidator from "../../src/validator/inputValidator.js";
 
 describe("InputValidator 테스트", () => {
   describe("단위 메소드 테스트", () => {
