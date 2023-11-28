@@ -7,16 +7,14 @@ import { generateRandomNumber } from "../util/generateRandomNumber.js";
 
 class GameController {
   constructor() {
-    this.startGame();
+    OutputView.startGame();
   }
 
-  startGame() {
-    OutputView.startGame();
-
+  async startGame() {
     const computerNumber = this.generateComputerNumber();
     const game = this.generateGame(computerNumber);
 
-    this.getUserNumber()
+    await this.playGame(game);
   }
 
   // 1-2. 컴퓨터는 임의의 3자리 숫자를 생성한다.
@@ -24,14 +22,30 @@ class GameController {
     return generateRandomNumber();
   }
 
-  generateGame(randomNumber) {
-    const game = new Game(randomNumber);
+  generateGame(computerNumber) {
+    const game = new Game(computerNumber);
     return game;
   }
 
   async getUserNumber() {
     const userNumber = InputValidator.validateUserNumber(await InputView.getUserNumber());
-    console.log(userNumber);
+    return userNumber;
+  }
+
+  // 3. 숫자 야구 게임을 진행한다.
+  async playGame(game) {
+    while (true) {
+      const userNumber = await this.getUserNumber();
+      game.setUser(userNumber);
+      const result = game.compareNumber();
+      OutputView.printResult(result);
+      
+      // 3-2. 3개의 숫자를 모두 맞히면 게임이 종료된다.
+      if (result.strike === 3) {
+        OutputView.endGame();
+        break;
+      }
+    }
   }
 }
 

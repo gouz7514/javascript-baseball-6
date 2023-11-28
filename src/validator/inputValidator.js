@@ -8,7 +8,7 @@ const InputValidator = {
     this.validateNumerRange(userNumber);
     this.validateDuplicateNumber(userNumber);
 
-    return userNumber.split('');
+    return userNumber.split('').map((number) => +number);
   },
   // 3자리만 입력 가능하다.
   validateLength(userNumber) {
