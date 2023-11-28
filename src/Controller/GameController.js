@@ -28,11 +28,6 @@ class GameController {
     return game;
   }
 
-  async getUserNumber() {
-    const userNumber = InputValidator.validateUserNumber(await InputView.getUserNumber());
-    return userNumber;
-  }
-
   // 3. 숫자 야구 게임을 진행한다.
   async playGame(game) {
     while (true) {
@@ -42,19 +37,25 @@ class GameController {
       OutputView.printResult(result);
       
       // 3-2. 3개의 숫자를 모두 맞히면 게임이 종료된다.
-      if (result.strike === 3) {
+      if (result.strike === GAME.end) {
         OutputView.endGame();
         break;
       }
     }
-    this.getRestart();
+    await this.getRestart();
+  }
+
+  // 2. 플레이어는 3자리의 숫자를 입력한다.
+  async getUserNumber() {
+    const userNumber = InputValidator.validateUserNumber(await InputView.getUserNumber());
+    return userNumber;
   }
 
   // 3-3. 게임을 종료한 후 게임을 다시 시작하거나 완전히 종료할 수 있다.
   async getRestart() {
     const answer = InputValidator.validateRestartNumber(await InputView.getRestart());
     if (answer === GAME.restart) {
-      this.startGame();
+      await this.startGame();
     }
   }
 }
